@@ -36,7 +36,7 @@ func fire():
 		if (readyToFire):
 			var bullet = weapon.instance()
 			bullet.position += bulletOffset
-			get_parent().add_child(bullet)
+			add_child(bullet)
 			readyToFire = false;
 			$ShotTimer.start()
 
