@@ -6,9 +6,9 @@ extends Path2D
 # var b = "text"
 export (PackedScene) var enemy
 export var spawnValue = [0.2,0.4,0.6,0.8]
-export var numberWaves = 1
+export var numberWaves = 2
 export var distance = 200
-
+var active = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -17,12 +17,12 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	wave_alive()
 	
 
 func spawn_enemies (waves):
 	
-	if waves < 1:
+	if numberWaves < 0:
 		pass
 	
 	var spot = $Line
@@ -34,4 +34,11 @@ func spawn_enemies (waves):
 			spawn.position = spot.position
 			spawn.position += offset
 			add_child(spawn)
-		
+			
+func wave_alive():
+	if (get_child_count() <= 2):
+		if $SpawnTimer.get_time_left() <= 0:
+			$SpawnTimer.start()
+
+func _on_SpawnTimer_timeout():
+	spawn_enemies(numberWaves)

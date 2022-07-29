@@ -82,7 +82,7 @@ text = "The enemies got past the checkpoint!
 Game Over!"
 align = 1
 
-[node name="Button" type="Button" parent="GameOver"]
+[node name="RetryGameOver" type="Button" parent="GameOver"]
 margin_left = 463.0
 margin_top = 171.0
 margin_right = 630.0
@@ -90,3 +90,5 @@ margin_bottom = 229.0
 text = "Retry"
 
 [connection signal="pressed" from="GameStart" to="." method="_on_GameStart_pressed"]
+[connection signal="pressed" from="Retry" to="." method="_on_Retry_pressed"]
+[connection signal="pressed" from="GameOver/RetryGameOver" to="." method="_on_RetryGameOver_pressed"]

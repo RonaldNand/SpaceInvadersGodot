@@ -13,6 +13,11 @@ curve = SubResource( 1 )
 script = ExtResource( 2 )
 enemy = ExtResource( 1 )
 
+[node name="SpawnTimer" type="Timer" parent="."]
+one_shot = true
+
 [node name="Line" type="PathFollow2D" parent="."]
 position = Vector2( 1280, 64 )
 offset = 1277.16
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]

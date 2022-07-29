@@ -6,15 +6,16 @@ extends Area2D
 # var b = "text"
 export var force = Vector2(0,-300)
 export var damage = 100
+export var bulletOffset = 100
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	position += Vector2(0,-bulletOffset)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	global_position += force * delta
+	position += force * delta
 
 func destroy_bullet():
 	hide()

@@ -1,7 +1,6 @@
 [gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Cover.tscn" type="PackedScene" id=2]
 [ext_resource path="res://SpawnLine.tscn" type="PackedScene" id=3]
 [ext_resource path="res://UI.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Stage.gd" type="Script" id=5]
@@ -12,8 +11,12 @@ extents = Vector2( 20, 360 )
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 605, 25 )
 
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 639, 32 )
+
 [node name="Stage" type="Node2D" groups=["Level"]]
 script = ExtResource( 5 )
+spawnerType = ExtResource( 3 )
 
 [node name="UI" parent="." instance=ExtResource( 4 )]
 
@@ -23,9 +26,7 @@ margin_bottom = 720.0
 color = Color( 0.47451, 0.0823529, 0.8, 1 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 640, 616 )
-
-[node name="SpawnLine" parent="." instance=ExtResource( 3 )]
+position = Vector2( -72, 300 )
 
 [node name="Wall" type="StaticBody2D" parent="."]
 position = Vector2( 0, 216 )
@@ -67,20 +68,6 @@ margin_right = 40.0
 margin_bottom = 983.0
 color = Color( 0, 0.796078, 0.0862745, 1 )
 
-[node name="Barriers" type="Node2D" parent="."]
-
-[node name="Cover" parent="Barriers" instance=ExtResource( 2 )]
-position = Vector2( 200, 448 )
-
-[node name="Cover2" parent="Barriers" instance=ExtResource( 2 )]
-position = Vector2( 520, 448 )
-
-[node name="Cover3" parent="Barriers" instance=ExtResource( 2 )]
-position = Vector2( 840, 448 )
-
-[node name="Cover4" parent="Barriers" instance=ExtResource( 2 )]
-position = Vector2( 1120, 448 )
-
 [node name="GameOverPoint" type="Area2D" parent="."]
 position = Vector2( 40, 560 )
 collision_layer = 2
@@ -90,5 +77,19 @@ collision_mask = 2
 position = Vector2( 595, 15 )
 shape = SubResource( 2 )
 
+[node name="OutOfBounds" type="Area2D" parent="."]
+position = Vector2( 11, -73 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OutOfBounds"]
+position = Vector2( 628, -10 )
+shape = SubResource( 3 )
+
+[node name="PlayerSpawn" type="Position2D" parent="."]
+position = Vector2( 638, 607 )
+
+[node name="SpawnerLocation" type="Position2D" parent="."]
+position = Vector2( 0, 64 )
+
+[connection signal="gameOver" from="UI" to="." method="_on_UI_gameOver"]
 [connection signal="gameStart" from="UI" to="." method="_on_UI_gameStart"]
 [connection signal="area_entered" from="GameOverPoint" to="." method="_on_GameOverPoint_area_entered"]

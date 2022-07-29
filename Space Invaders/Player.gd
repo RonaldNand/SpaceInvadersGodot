@@ -5,20 +5,23 @@ export (int) var speed = 200
 export var bulletOffset = Vector2(0,-50)
 export (PackedScene) var weapon
 var velocity = Vector2()
-var readyToFire = true;
+var readyToFire = false
+var movement = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
 
 func _process(delta):
-	get_input()
-	move_and_slide(velocity)
-	fire()
+	if movement:
+		get_input()
+		move_and_slide(velocity)
+		fire()
 
 
 
 func get_input():
+	
 	velocity = Vector2()
 	if Input.is_action_pressed("move_right"):
 		velocity.x += 1
@@ -33,10 +36,10 @@ func get_input():
 func fire():
 	
 	if (Input.is_action_just_pressed("fire")):
-		if (readyToFire):
+		if (readyToFire): 
 			var bullet = weapon.instance()
-			bullet.position += bulletOffset
-			add_child(bullet)
+			bullet.position = position
+			get_parent().add_child(bullet)
 			readyToFire = false;
 			$ShotTimer.start()
 

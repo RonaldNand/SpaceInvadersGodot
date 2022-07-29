@@ -6,8 +6,7 @@ extends Area2D
 # var b = "text"
 export var distance = 100
 export var health = 100
-
-signal EnemyDestroyed
+var movement = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -18,7 +17,8 @@ func _process(delta):
 
 
 func move_down():
-	position += Vector2(0,distance)
+	if movement:
+		position += Vector2(0,distance)
 
 func die():
 	get_parent().get_parent().LevelScore += 1
