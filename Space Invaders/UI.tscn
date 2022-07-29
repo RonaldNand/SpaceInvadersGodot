@@ -1,0 +1,92 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Art/Fonts/SpaceAge/space age.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://UI.gd" type="Script" id=2]
+
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://Art/Fonts/SpaceAge/space age.ttf"
+
+[sub_resource type="DynamicFont" id=2]
+size = 60
+font_data = SubResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 40
+font_data = ExtResource( 1 )
+
+[node name="UI" type="CanvasLayer"]
+script = ExtResource( 2 )
+
+[node name="Title" type="Label" parent="."]
+margin_left = 330.0
+margin_top = 125.0
+margin_right = 1014.0
+margin_bottom = 253.0
+custom_fonts/font = SubResource( 2 )
+text = "Space Invaders!
+"
+align = 1
+
+[node name="Message" type="Label" parent="."]
+margin_left = 86.0
+margin_top = 255.0
+margin_right = 1216.0
+margin_bottom = 382.0
+custom_fonts/font = SubResource( 3 )
+text = "Don't Let the Aliens Reach the Bottom.
+Move Left: W/Left
+Move Right: D/Right
+Shoot: Space/Click"
+align = 1
+
+[node name="GameStart" type="Button" parent="."]
+margin_left = 585.0
+margin_top = 416.0
+margin_right = 689.0
+margin_bottom = 476.0
+text = "Start"
+
+[node name="Retry" type="Button" parent="."]
+margin_left = 15.0
+margin_top = 22.0
+margin_right = 140.0
+margin_bottom = 74.0
+text = "Retry"
+
+[node name="ScoreBackground" type="ColorRect" parent="."]
+margin_left = 1101.0
+margin_top = 26.0
+margin_right = 1228.0
+margin_bottom = 66.0
+color = Color( 0.54902, 0.639216, 0.0313726, 1 )
+
+[node name="Score" type="Label" parent="ScoreBackground"]
+margin_left = 15.0
+margin_top = 13.0
+margin_right = 115.0
+margin_bottom = 27.0
+custom_colors/font_color = Color( 0.0117647, 0, 0, 1 )
+text = "Score: "
+
+[node name="GameOver" type="Label" parent="."]
+margin_left = 88.0
+margin_top = 245.0
+margin_right = 1203.0
+margin_bottom = 365.0
+custom_fonts/font = SubResource( 4 )
+text = "The enemies got past the checkpoint!
+
+Game Over!"
+align = 1
+
+[node name="Button" type="Button" parent="GameOver"]
+margin_left = 463.0
+margin_top = 171.0
+margin_right = 630.0
+margin_bottom = 229.0
+text = "Retry"
+
+[connection signal="pressed" from="GameStart" to="." method="_on_GameStart_pressed"]
