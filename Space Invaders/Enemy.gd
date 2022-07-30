@@ -4,9 +4,10 @@ extends Area2D
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-export var distance = 100
+export var distance = 128
 export var health = 100
 var movement = true
+var movementType = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -16,9 +17,19 @@ func _process(delta):
 	pass
 
 
-func move_down():
+func move():
 	if movement:
-		position += Vector2(0,distance)
+		match movementType:
+			0:
+				position += Vector2(0,distance)
+				movementType += 1
+			1:
+				position += Vector2(distance,0)
+				movementType += 1
+			2:
+				position += Vector2(-distance,0)
+				movementType = 0
+				
 
 func die():
 	get_parent().get_parent().LevelScore += 1
@@ -31,4 +42,4 @@ func hit(damage):
 		die()
 
 func _on_MovementTimer_timeout():
-	move_down() # Replace with function body.
+	move() # Replace with function body.

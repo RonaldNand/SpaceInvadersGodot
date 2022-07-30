@@ -6,8 +6,9 @@ extends Path2D
 # var b = "text"
 export (PackedScene) var enemy
 export var spawnValue = [0.2,0.4,0.6,0.8]
+export var numberOfEnemies = 5
 export var numberWaves = 2
-export var distance = 200
+export var distance = 128
 var active = false
 
 # Called when the node enters the scene tree for the first time.
@@ -28,8 +29,8 @@ func spawn_enemies (waves):
 	var spot = $Line
 	for n in waves:
 		var offset = Vector2(0,n * distance)
-		for number in (spawnValue): 
-			spot.unit_offset = number
+		for number in (numberOfEnemies):
+			spot.unit_offset = 0.1 + (number * 0.15)
 			var spawn = enemy.instance()
 			spawn.position = spot.position
 			spawn.position += offset

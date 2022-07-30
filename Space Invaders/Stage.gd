@@ -19,14 +19,22 @@ var retry = false
 #	pass
 
 
-func _on_UI_gameStart():
-	initialiseGame() 
+func _on_UI_MainMenu_gameStart():
+	initialiseGame()
+
+func _on_UI_GameOverlay_gameStart():
+	initialiseGame() # Replace with function body.
+
+func _on_UI_GameOverlay_gameOver():
+	retry() # Replace with function body.
 
 func _on_GameOverPoint_area_entered(area):
 	#if area.is_in_group("enemy"):
 	gameOver() 
 
 func initialiseGame():
+	LevelScore = 0
+	$UI_GameOverlay.toggle_UI(1)
 	if retry:
 		$Spawner.free()
 	$Player.position = $PlayerSpawn.position
@@ -38,7 +46,7 @@ func initialiseGame():
 	add_child(spawner)
 
 func gameOver():
-	$UI/GameOver.show()
+	$UI_GameOverlay/GameOver.show()
 	$Player.readyToFire = false;
 	$Player.movement = false;
 	var num = $Spawner.get_child_count()
@@ -58,5 +66,10 @@ func retry():
 	initialiseGame()
 	
 
-func _on_UI_gameOver():
-	retry() # Replace with function body.
+
+
+
+
+
+
+

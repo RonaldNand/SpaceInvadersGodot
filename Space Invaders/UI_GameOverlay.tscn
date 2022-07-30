@@ -1,59 +1,28 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://Art/Fonts/SpaceAge/space age.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://UI.gd" type="Script" id=2]
+[ext_resource path="res://Art/Fonts/flash-rogers (Score)/flashrogers.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Art/Fonts/audiowide (MessageText)/Audiowide-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://UI_GameOverlay.gd" type="Script" id=4]
 
-[sub_resource type="DynamicFontData" id=1]
-font_path = "res://Art/Fonts/SpaceAge/space age.ttf"
+[sub_resource type="DynamicFont" id=7]
+font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=2]
-size = 60
-font_data = SubResource( 1 )
-
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=6]
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=4]
 size = 40
-font_data = ExtResource( 1 )
+font_data = ExtResource( 2 )
 
-[node name="UI" type="CanvasLayer"]
-script = ExtResource( 2 )
-
-[node name="Title" type="Label" parent="."]
-margin_left = 330.0
-margin_top = 125.0
-margin_right = 1014.0
-margin_bottom = 253.0
-custom_fonts/font = SubResource( 2 )
-text = "Space Invaders!
-"
-align = 1
-
-[node name="Message" type="Label" parent="."]
-margin_left = 86.0
-margin_top = 255.0
-margin_right = 1216.0
-margin_bottom = 382.0
-custom_fonts/font = SubResource( 3 )
-text = "Don't Let the Aliens Reach the Bottom.
-Move Left: W/Left
-Move Right: D/Right
-Shoot: Space/Click"
-align = 1
-
-[node name="GameStart" type="Button" parent="."]
-margin_left = 585.0
-margin_top = 416.0
-margin_right = 689.0
-margin_bottom = 476.0
-text = "Start"
+[node name="UI_GameOverlay" type="CanvasLayer"]
+script = ExtResource( 4 )
 
 [node name="Retry" type="Button" parent="."]
 margin_left = 15.0
 margin_top = 22.0
 margin_right = 140.0
 margin_bottom = 74.0
+custom_fonts/font = SubResource( 7 )
 text = "Retry"
 
 [node name="ScoreBackground" type="ColorRect" parent="."]
@@ -69,6 +38,7 @@ margin_top = 13.0
 margin_right = 115.0
 margin_bottom = 27.0
 custom_colors/font_color = Color( 0.0117647, 0, 0, 1 )
+custom_fonts/font = SubResource( 6 )
 text = "Score: "
 
 [node name="GameOver" type="Label" parent="."]
@@ -89,6 +59,5 @@ margin_right = 630.0
 margin_bottom = 229.0
 text = "Retry"
 
-[connection signal="pressed" from="GameStart" to="." method="_on_GameStart_pressed"]
 [connection signal="pressed" from="Retry" to="." method="_on_Retry_pressed"]
 [connection signal="pressed" from="GameOver/RetryGameOver" to="." method="_on_RetryGameOver_pressed"]

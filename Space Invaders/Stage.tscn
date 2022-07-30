@@ -1,29 +1,33 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://SpawnLine.tscn" type="PackedScene" id=3]
-[ext_resource path="res://UI.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Art/black.png" type="Texture" id=2]
+[ext_resource path="res://UI_GameOverlay.tscn" type="PackedScene" id=3]
+[ext_resource path="res://UI_MainMenu.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Stage.gd" type="Script" id=5]
+[ext_resource path="res://SpawnLine.tscn" type="PackedScene" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 20, 360 )
+extents = Vector2( 20, 600 )
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 605, 25 )
+extents = Vector2( 605, 65 )
 
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 639, 32 )
 
 [node name="Stage" type="Node2D" groups=["Level"]]
 script = ExtResource( 5 )
-spawnerType = ExtResource( 3 )
+spawnerType = ExtResource( 6 )
 
-[node name="UI" parent="." instance=ExtResource( 4 )]
+[node name="UI_MainMenu" parent="." instance=ExtResource( 4 )]
 
-[node name="Background" type="ColorRect" parent="."]
-margin_right = 1280.0
-margin_bottom = 720.0
-color = Color( 0.47451, 0.0823529, 0.8, 1 )
+[node name="UI_GameOverlay" parent="." instance=ExtResource( 3 )]
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 640, 360 )
+scale = Vector2( 5, 2.8125 )
+texture = ExtResource( 2 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( -72, 300 )
@@ -31,11 +35,7 @@ position = Vector2( -72, 300 )
 [node name="Wall" type="StaticBody2D" parent="."]
 position = Vector2( 0, 216 )
 
-[node name="ColorRect" type="ColorRect" parent="Wall"]
-margin_top = -216.0
-margin_right = 40.0
-margin_bottom = 504.0
-color = Color( 0, 0.796078, 0.0862745, 1 )
+[node name="ColorRect" type="Sprite" parent="Wall"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall"]
 position = Vector2( 20, 144 )
@@ -48,25 +48,17 @@ position = Vector2( 1240, 216 )
 position = Vector2( 20, 144 )
 shape = SubResource( 1 )
 
-[node name="ColorRect" type="ColorRect" parent="Wall2"]
-margin_top = -216.0
-margin_right = 40.0
-margin_bottom = 504.0
-color = Color( 0, 0.796078, 0.0862745, 1 )
+[node name="ColorRect" type="Sprite" parent="Wall2"]
 
 [node name="Wall3" type="StaticBody2D" parent="."]
-position = Vector2( 1024, 680 )
+position = Vector2( 640, 680 )
 rotation = 1.57079
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall3"]
-position = Vector2( 20, 384 )
+position = Vector2( 20, 0.00012207 )
 shape = SubResource( 1 )
 
-[node name="ColorRect" type="ColorRect" parent="Wall3"]
-margin_top = -216.0
-margin_right = 40.0
-margin_bottom = 983.0
-color = Color( 0, 0.796078, 0.0862745, 1 )
+[node name="ColorRect" type="Sprite" parent="Wall3"]
 
 [node name="GameOverPoint" type="Area2D" parent="."]
 position = Vector2( 40, 560 )
@@ -74,7 +66,7 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GameOverPoint"]
-position = Vector2( 595, 15 )
+position = Vector2( 595, 55 )
 shape = SubResource( 2 )
 
 [node name="OutOfBounds" type="Area2D" parent="."]
@@ -88,8 +80,9 @@ shape = SubResource( 3 )
 position = Vector2( 638, 607 )
 
 [node name="SpawnerLocation" type="Position2D" parent="."]
-position = Vector2( 0, 64 )
+position = Vector2( 40, 80 )
 
-[connection signal="gameOver" from="UI" to="." method="_on_UI_gameOver"]
-[connection signal="gameStart" from="UI" to="." method="_on_UI_gameStart"]
+[connection signal="gameStart" from="UI_MainMenu" to="." method="_on_UI_MainMenu_gameStart"]
+[connection signal="gameOver" from="UI_GameOverlay" to="." method="_on_UI_GameOverlay_gameOver"]
+[connection signal="gameStart" from="UI_GameOverlay" to="." method="_on_UI_GameOverlay_gameStart"]
 [connection signal="area_entered" from="GameOverPoint" to="." method="_on_GameOverPoint_area_entered"]
