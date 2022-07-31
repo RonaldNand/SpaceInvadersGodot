@@ -6,7 +6,7 @@ export var bulletOffset = Vector2(0,-50)
 export (PackedScene) var weapon
 var velocity = Vector2()
 var readyToFire = false
-var movement = true
+var movement = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -52,4 +52,4 @@ func hit():
 
 
 func _on_ShotTimer_timeout():
-	readyToFire = true; # Replace with function body.
+	readyToFire = true; 

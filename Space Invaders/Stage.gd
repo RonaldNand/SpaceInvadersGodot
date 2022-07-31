@@ -9,11 +9,9 @@ export (PackedScene) var spawnerType
 var retry = false
 
 # Called when the node enters the scene tree for the first time.
-#func _ready():
-#	$Player.hide()
-#
-
-
+func _ready():
+	get_tree().paused = true
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
@@ -25,46 +23,31 @@ func _on_UI_MainMenu_gameStart():
 func _on_UI_GameOverlay_gameStart():
 	initialiseGame() # Replace with function body.
 
-func _on_UI_GameOverlay_gameOver():
-	retry() # Replace with function body.
+func _on_UI_GameOverlay_retry():
+	initialiseGame() # Replace with function body.
+
 
 func _on_GameOverPoint_area_entered(area):
 	#if area.is_in_group("enemy"):
 	gameOver() 
-
+	
 func initialiseGame():
 	LevelScore = 0
 	$UI_GameOverlay.toggle_UI(1)
-	if retry:
-		$Spawner.free()
 	$Player.position = $PlayerSpawn.position
 	$Player.readyToFire = true
 	$Player.movement = true
-	var spawner = spawnerType.instance()
-	spawner.set_name("Spawner")
-	spawner.position = $SpawnerLocation.position
-	add_child(spawner)
+	$Spawn.clear_enemies()
+	$Spawn.spawn_enemies(2)
+	get_tree().paused = false
 
 func gameOver():
 	$UI_GameOverlay/GameOver.show()
-	$Player.readyToFire = false;
-	$Player.movement = false;
-	var num = $Spawner.get_child_count()
-	for x in num:
-		if $Spawner.get_child(x).is_in_group('enemy'):
-			$Spawner.get_child(x).movement = false
-	retry = true
+	get_tree().paused = true
 
-func retry():
-	$Player.readyToFire = false;
-	$Player.movement = false;
-	var num = $Spawner.get_child_count()
-	for x in num:
-		if $Spawner.get_child(x).is_in_group('enemy'):
-			$Spawner.get_child(x).movement = false
-	retry = true
-	initialiseGame()
-	
+
+
+
 
 
 

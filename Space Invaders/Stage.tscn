@@ -21,8 +21,10 @@ script = ExtResource( 5 )
 spawnerType = ExtResource( 6 )
 
 [node name="UI_MainMenu" parent="." instance=ExtResource( 4 )]
+pause_mode = 2
 
 [node name="UI_GameOverlay" parent="." instance=ExtResource( 3 )]
+pause_mode = 2
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 640, 360 )
@@ -31,6 +33,8 @@ texture = ExtResource( 2 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( -72, 300 )
+
+[node name="Spawn" parent="." instance=ExtResource( 6 )]
 
 [node name="Wall" type="StaticBody2D" parent="."]
 position = Vector2( 0, 216 )
@@ -83,6 +87,6 @@ position = Vector2( 638, 607 )
 position = Vector2( 40, 80 )
 
 [connection signal="gameStart" from="UI_MainMenu" to="." method="_on_UI_MainMenu_gameStart"]
-[connection signal="gameOver" from="UI_GameOverlay" to="." method="_on_UI_GameOverlay_gameOver"]
 [connection signal="gameStart" from="UI_GameOverlay" to="." method="_on_UI_GameOverlay_gameStart"]
+[connection signal="retry" from="UI_GameOverlay" to="." method="_on_UI_GameOverlay_retry"]
 [connection signal="area_entered" from="GameOverPoint" to="." method="_on_GameOverPoint_area_entered"]

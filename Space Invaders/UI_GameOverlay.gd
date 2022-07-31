@@ -7,7 +7,7 @@ extends CanvasLayer
 
 
 signal gameStart
-signal gameOver
+signal retry
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -34,7 +34,7 @@ func _on_RetryGameOver_pressed():
 
 
 func _on_Retry_pressed():
-	emit_signal("gameOver") 
+	emit_signal("retry") 
 
 func toggle_UI(x):
 	#Pass 0 to Hide all UI Elements, Pass 1 to Show All UI Elements

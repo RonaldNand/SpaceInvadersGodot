@@ -9,12 +9,10 @@ export var spawnValue = [0.2,0.4,0.6,0.8]
 export var numberOfEnemies = 5
 export var numberWaves = 2
 export var distance = 128
-var active = false
 
 # Called when the node enters the scene tree for the first time.
-func _ready():
-	spawn_enemies(numberWaves)
-	
+#func _ready():
+#
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -35,6 +33,11 @@ func spawn_enemies (waves):
 			spawn.position = spot.position
 			spawn.position += offset
 			add_child(spawn)
+
+func clear_enemies():
+	for number in get_child_count():
+		if get_child(number).is_in_group("enemy"):
+			get_child(number).queue_free()
 			
 func wave_alive():
 	if (get_child_count() <= 2):
