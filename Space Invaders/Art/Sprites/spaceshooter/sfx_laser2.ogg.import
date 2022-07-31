@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/sfx_laser2.ogg-fbfb7d18137eb4700bacbce153f5b571.oggstr"
+
+[deps]
+
+source_file="res://Art/Sprites/spaceshooter/sfx_laser2.ogg"
+dest_files=[ "res://.import/sfx_laser2.ogg-fbfb7d18137eb4700bacbce153f5b571.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

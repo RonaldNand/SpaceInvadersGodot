@@ -1,12 +1,13 @@
 extends KinematicBody2D
 
 
-export (int) var speed = 200
+export (int) var speed = 400
 export var bulletOffset = Vector2(0,-50)
 export (PackedScene) var weapon
 var velocity = Vector2()
 var readyToFire = false
 var movement = false
+var soundIndex = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -42,6 +43,8 @@ func fire():
 			get_parent().add_child(bullet)
 			readyToFire = false;
 			$ShotTimer.start()
+			if !($LaserSFX1.is_playing()):
+				$LaserSFX1.play()
 
 func die():
 	hide()
@@ -53,3 +56,13 @@ func hit():
 
 func _on_ShotTimer_timeout():
 	readyToFire = true; 
+
+#func playAudio(index):
+#	match index:
+#		0:
+#			$LaserSFX1.play()
+#			soundIndex += 1
+#		1:
+#			$LaserSFX2.play()
+#			soundIndex = 0
+

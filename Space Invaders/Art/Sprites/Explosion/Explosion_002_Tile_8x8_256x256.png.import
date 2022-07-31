@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/OrangeSquare.png-03f67c4c38739258771a0bbd62c82cc7.stex"
+path="res://.import/Explosion_002_Tile_8x8_256x256.png-e61a7e39033a254bd18a4e01c6d7df9d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/OrangeSquare.png"
-dest_files=[ "res://.import/OrangeSquare.png-03f67c4c38739258771a0bbd62c82cc7.stex" ]
+source_file="res://Art/Sprites/Explosion/Explosion_002_Tile_8x8_256x256.png"
+dest_files=[ "res://.import/Explosion_002_Tile_8x8_256x256.png-e61a7e39033a254bd18a4e01c6d7df9d.stex" ]
 
 [params]
 

@@ -6,12 +6,13 @@ extends Area2D
 # var b = "text"
 export var distance = 128
 export var health = 100
+export var movementTime = 3
 var readyToMove = false
 var movementType = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	$MovementTimer.set_wait_time(movementTime) # Replace with function body.
 	
 func _process(delta):
 	if (readyToMove):
@@ -37,6 +38,7 @@ func move():
 
 func die():
 	get_parent().get_parent().LevelScore += 1
+	$AnimatedSprite.play("explode")
 	hide()
 	queue_free()
 

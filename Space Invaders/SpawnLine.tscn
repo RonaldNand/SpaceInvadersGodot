@@ -17,7 +17,7 @@ enemy = ExtResource( 1 )
 one_shot = true
 
 [node name="Line" type="PathFollow2D" parent="."]
-position = Vector2( 1240, 80 )
-offset = 1277.16
+position = Vector2( 75.7199, 80 )
+offset = 35.8442
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]

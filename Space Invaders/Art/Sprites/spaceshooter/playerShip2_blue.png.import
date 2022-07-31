@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/black.png-5aee6b627577e67a6b5e431c8a067c48.stex"
+path="res://.import/playerShip2_blue.png-29e78e0cb05bc6ebd6707bc9f604db27.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/black.png"
-dest_files=[ "res://.import/black.png-5aee6b627577e67a6b5e431c8a067c48.stex" ]
+source_file="res://Art/Sprites/spaceshooter/playerShip2_blue.png"
+dest_files=[ "res://.import/playerShip2_blue.png-29e78e0cb05bc6ebd6707bc9f604db27.stex" ]
 
 [params]
 

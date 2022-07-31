@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/YellowSquare.png-b8241c405f547c26224952b8a3c72c49.stex"
+path="res://.import/Scene-1.jpg-4d70e1d09bf94951768b27abf5e33577.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/YellowSquare.png"
-dest_files=[ "res://.import/YellowSquare.png-b8241c405f547c26224952b8a3c72c49.stex" ]
+source_file="res://Art/Backgrounds/Space Background [Rawdanitsu]/Scene-1.jpg"
+dest_files=[ "res://.import/Scene-1.jpg-4d70e1d09bf94951768b27abf5e33577.stex" ]
 
 [params]
 

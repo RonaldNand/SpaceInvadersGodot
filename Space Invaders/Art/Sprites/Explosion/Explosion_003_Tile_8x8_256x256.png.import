@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/RedSquare.png-2984c4a93eea55bdbc93b79fe6988174.stex"
+path="res://.import/Explosion_003_Tile_8x8_256x256.png-cfdc2a3bd0b0311fb3c97ce3c1ad59c8.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/RedSquare.png"
-dest_files=[ "res://.import/RedSquare.png-2984c4a93eea55bdbc93b79fe6988174.stex" ]
+source_file="res://Art/Sprites/Explosion/Explosion_003_Tile_8x8_256x256.png"
+dest_files=[ "res://.import/Explosion_003_Tile_8x8_256x256.png-cfdc2a3bd0b0311fb3c97ce3c1ad59c8.stex" ]
 
 [params]
 

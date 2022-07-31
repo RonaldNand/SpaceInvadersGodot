@@ -8,6 +8,7 @@ extends CanvasLayer
 
 signal gameStart
 signal retry
+signal unpause
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -36,6 +37,20 @@ func _on_RetryGameOver_pressed():
 func _on_Retry_pressed():
 	emit_signal("retry") 
 
+func _on_Button_pressed():
+	$Pause.hide() 
+	emit_signal("unpause")
+
+func _on_Spawn_difficultyIncrease():
+	$Warning.show() 
+	$Warning/WarningMessageTime.start()
+	$Warning/WarningSound.play()
+
+func _on_WarningMessageTime_timeout():
+	$Warning.hide() # Replace with function body.
+	$Warning/WarningSound.stop()
+
+
 func toggle_UI(x):
 	#Pass 0 to Hide all UI Elements, Pass 1 to Show All UI Elements
 	for n in get_child_count():
@@ -45,3 +60,12 @@ func toggle_UI(x):
 			1:
 				get_child(n).show()
 	$GameOver.hide()
+	$Pause.hide()
+	$Warning.hide()
+
+
+
+
+
+
+

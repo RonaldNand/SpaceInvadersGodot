@@ -6,7 +6,7 @@ extends Area2D
 # var b = "text"
 export var force = Vector2(0,-300)
 export var damage = 100
-export var bulletOffset = 100
+export var bulletOffset = 20
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -26,3 +26,5 @@ func _on_Bullet_area_entered(area):
 	if area.is_in_group("enemy"):
 		area.hit(damage)
 	destroy_bullet()
+
+
