@@ -1,12 +1,9 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Art/Fonts/flash-rogers (Score)/flashrogers.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Art/Fonts/audiowide (MessageText)/Audiowide-Regular.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://Sound/Warning/Warning.ogg" type="AudioStream" id=3]
 [ext_resource path="res://UI_GameOverlay.gd" type="Script" id=4]
-
-[sub_resource type="DynamicFont" id=7]
-font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=6]
 font_data = ExtResource( 1 )
@@ -26,14 +23,6 @@ font_data = ExtResource( 2 )
 
 [node name="UI_GameOverlay" type="CanvasLayer"]
 script = ExtResource( 4 )
-
-[node name="Retry" type="Button" parent="."]
-margin_left = 15.0
-margin_top = 22.0
-margin_right = 140.0
-margin_bottom = 74.0
-custom_fonts/font = SubResource( 7 )
-text = "Retry"
 
 [node name="ScoreBackground" type="ColorRect" parent="."]
 margin_left = 1101.0
@@ -69,6 +58,13 @@ margin_right = 630.0
 margin_bottom = 229.0
 text = "Retry"
 
+[node name="MainMenu" type="Button" parent="GameOver"]
+margin_left = 463.0
+margin_top = 243.0
+margin_right = 630.0
+margin_bottom = 299.0
+text = "Main Menu"
+
 [node name="Pause" type="Label" parent="."]
 margin_left = 498.0
 margin_top = 272.0
@@ -77,12 +73,19 @@ margin_bottom = 362.0
 custom_fonts/font = SubResource( 8 )
 text = "Paused"
 
-[node name="Button" type="Button" parent="Pause"]
+[node name="Resume" type="Button" parent="Pause"]
 margin_left = 69.0
 margin_top = 138.0
 margin_right = 209.0
 margin_bottom = 203.0
 text = "Resume"
+
+[node name="MainMenu" type="Button" parent="Pause"]
+margin_left = 70.0
+margin_top = 216.0
+margin_right = 209.0
+margin_bottom = 272.0
+text = "Main Menu"
 
 [node name="Warning" type="Label" parent="."]
 margin_left = 520.0
@@ -94,13 +97,17 @@ text = "Stronger Enemies
 are Approaching..."
 
 [node name="WarningMessageTime" type="Timer" parent="Warning"]
-wait_time = 5.0
+wait_time = 4.0
 
 [node name="WarningSound" type="AudioStreamPlayer2D" parent="Warning"]
 position = Vector2( 110, -69 )
 stream = ExtResource( 3 )
 
-[connection signal="pressed" from="Retry" to="." method="_on_Retry_pressed"]
+[node name="SelectSFX" type="AudioStreamPlayer2D" parent="."]
+
 [connection signal="pressed" from="GameOver/RetryGameOver" to="." method="_on_RetryGameOver_pressed"]
-[connection signal="pressed" from="Pause/Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="GameOver/MainMenu" to="." method="_on_MainMenu_pressed"]
+[connection signal="pressed" from="Pause/Resume" to="." method="_on_Resume_pressed"]
+[connection signal="pressed" from="Pause/Resume" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="Pause/MainMenu" to="." method="_on_MainMenu_pressed"]
 [connection signal="timeout" from="Warning/WarningMessageTime" to="." method="_on_WarningMessageTime_timeout"]

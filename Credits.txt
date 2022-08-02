@@ -1,0 +1,18 @@
+Made with GODOT Engine
+
+Programming and Game Design: Ronald Nand
+
+Art Assets Used:
+
+Fonts:
+Audiowide by Brian J (2012)
+Flash Rogers by Daniel Zadorozny (2015)
+Space Age by http://mickeyavenue.com/ (2002)
+
+2D Art: 
+Space Backgrounds by Rawdanitsu (opengameart.org)
+Explosion Tileset by elnineo (opengameart.org)
+Space Shooter Tileset by Kenney Vleugels (kenney.nl)
+
+Sound:
+Warning Siren by erkanozan (https://freesound.org/)

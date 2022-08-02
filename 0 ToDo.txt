@@ -1,3 +1,11 @@
-1. Implement Explosions on Enemy Death.
-2. Implement Difficulty
-3. Rewrite game over/game start.
+Issues:
+-Implement BGM Explosion SFX
+
+New Features:
+-UI Messages through code
+-Main Menu, Level Select, Credits, Sound ON/OFF
+
+Potential Features?
+
+Power ups
+Multiple Enemy Types

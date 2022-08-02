@@ -5,11 +5,9 @@ extends CanvasLayer
 # var a = 2
 # var b = "text"
 
-signal gameStart
-
 # Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+#func _ready():
+#	pass 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
@@ -17,8 +15,22 @@ func _ready():
 
 
 func _on_GameStart_pressed():
-	emit_signal("gameStart")
-	toggle_UI(0)
+	play_SelectSFX()
+	get_tree().change_scene("res://Stage.tscn")
+	print("Godot")
+	#toggle_UI(0)
+
+func _on_MuteSound_pressed():
+	play_SelectSFX()
+	print("mutesound") # Replace with function body.
+
+func _on_MuteMusic_pressed():
+	play_SelectSFX()
+	pass # Replace with function body.
+
+	
+func play_SelectSFX():
+	$SelectSFX.play()
 
 func toggle_UI(x):
 	#Pass 0 to Hide all UI Elements, Pass 1 to Show All UI Elements
@@ -28,3 +40,10 @@ func toggle_UI(x):
 				get_child(n).hide()
 			1:
 				get_child(n).show()
+
+
+
+
+
+
+

@@ -1,0 +1,184 @@
+[gd_scene load_steps=37 format=2]
+
+[ext_resource path="res://Art/Sprites/Explosion/Explosion_001_Tile_8x8_256x256.png" type="Texture" id=1]
+[ext_resource path="res://Explosion.gd" type="Script" id=2]
+
+[sub_resource type="AtlasTexture" id=66]
+region = Rect2( 1792, 1792, 256, 256 )
+
+[sub_resource type="AtlasTexture" id=67]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 256, 256 )
+
+[sub_resource type="AtlasTexture" id=68]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 512, 0, 256, 256 )
+
+[sub_resource type="AtlasTexture" id=69]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 1024, 0, 256, 256 )
+
+[sub_resource type="AtlasTexture" id=70]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 1536, 0, 256, 256 )
+
+[sub_resource type="AtlasTexture" id=71]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 0, 256, 256, 256 )
+
+[sub_resource type="AtlasTexture" id=72]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 512, 256, 256, 256 )
+
+[sub_resource type="AtlasTexture" id=73]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 1024, 256, 256, 256 )
+
+[sub_resource type="AtlasTexture" id=74]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 1536, 256, 256, 256 )
+
+[sub_resource type="AtlasTexture" id=75]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 0, 512, 256, 256 )
+
+[sub_resource type="AtlasTexture" id=76]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 512, 512, 256, 256 )
+
+[sub_resource type="AtlasTexture" id=77]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 1024, 512, 256, 256 )
+
+[sub_resource type="AtlasTexture" id=78]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 1536, 512, 256, 256 )
+
+[sub_resource type="AtlasTexture" id=79]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 0, 768, 256, 256 )
+
+[sub_resource type="AtlasTexture" id=80]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 512, 768, 256, 256 )
+
+[sub_resource type="AtlasTexture" id=81]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 1024, 768, 256, 256 )
+
+[sub_resource type="AtlasTexture" id=82]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 1536, 768, 256, 256 )
+
+[sub_resource type="AtlasTexture" id=83]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 0, 1024, 256, 256 )
+
+[sub_resource type="AtlasTexture" id=84]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 512, 1024, 256, 256 )
+
+[sub_resource type="AtlasTexture" id=85]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 1024, 1024, 256, 256 )
+
+[sub_resource type="AtlasTexture" id=86]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 1536, 1024, 256, 256 )
+
+[sub_resource type="AtlasTexture" id=87]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 0, 1280, 256, 256 )
+
+[sub_resource type="AtlasTexture" id=88]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 512, 1280, 256, 256 )
+
+[sub_resource type="AtlasTexture" id=89]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 1024, 1280, 256, 256 )
+
+[sub_resource type="AtlasTexture" id=90]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 1536, 1280, 256, 256 )
+
+[sub_resource type="AtlasTexture" id=91]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 0, 1536, 256, 256 )
+
+[sub_resource type="AtlasTexture" id=92]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 512, 1536, 256, 256 )
+
+[sub_resource type="AtlasTexture" id=93]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 1024, 1536, 256, 256 )
+
+[sub_resource type="AtlasTexture" id=94]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 1536, 1536, 256, 256 )
+
+[sub_resource type="AtlasTexture" id=95]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 0, 1792, 256, 256 )
+
+[sub_resource type="AtlasTexture" id=96]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 512, 1792, 256, 256 )
+
+[sub_resource type="AtlasTexture" id=97]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 1024, 1792, 256, 256 )
+
+[sub_resource type="AtlasTexture" id=98]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 1536, 1792, 256, 256 )
+
+[sub_resource type="SpriteFrames" id=99]
+animations = [ {
+"frames": [ SubResource( 66 ), SubResource( 67 ), SubResource( 68 ), SubResource( 69 ), SubResource( 70 ), SubResource( 71 ), SubResource( 72 ), SubResource( 73 ), SubResource( 74 ), SubResource( 75 ), SubResource( 76 ), SubResource( 77 ), SubResource( 78 ), SubResource( 79 ), SubResource( 80 ), SubResource( 81 ), SubResource( 82 ), SubResource( 83 ), SubResource( 84 ), SubResource( 85 ), SubResource( 86 ), SubResource( 87 ), SubResource( 88 ), SubResource( 89 ), SubResource( 90 ), SubResource( 91 ), SubResource( 92 ), SubResource( 93 ), SubResource( 94 ), SubResource( 95 ), SubResource( 96 ), SubResource( 97 ), SubResource( 98 ) ],
+"loop": false,
+"name": "explode",
+"speed": 24.0
+} ]
+
+[node name="Explosion" type="AnimatedSprite"]
+position = Vector2( 1.90735e-06, 1.90735e-06 )
+scale = Vector2( 0.688, 0.688 )
+frames = SubResource( 99 )
+animation = "explode"
+script = ExtResource( 2 )
+
+[connection signal="animation_finished" from="." to="." method="_on_Explosion_animation_finished"]

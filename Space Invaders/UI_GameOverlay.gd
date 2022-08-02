@@ -5,9 +5,7 @@ extends CanvasLayer
 # var a = 2
 # var b = "text"
 
-
 signal gameStart
-signal retry
 signal unpause
 
 # Called when the node enters the scene tree for the first time.
@@ -33,13 +31,15 @@ func _on_RetryGameOver_pressed():
 	$GameOver.hide()
 	emit_signal("gameStart") 
 
-
-func _on_Retry_pressed():
-	emit_signal("retry") 
-
-func _on_Button_pressed():
+func _on_Resume_pressed():
+	play_SelectSFX()
 	$Pause.hide() 
 	emit_signal("unpause")
+
+func _on_MainMenu_pressed():
+	play_SelectSFX()
+	get_tree().change_scene("res://UI_MainMenu.tscn")
+	get_tree().paused = false
 
 func _on_Spawn_difficultyIncrease():
 	$Warning.show() 
@@ -47,9 +47,11 @@ func _on_Spawn_difficultyIncrease():
 	$Warning/WarningSound.play()
 
 func _on_WarningMessageTime_timeout():
-	$Warning.hide() # Replace with function body.
+	$Warning.hide() 
 	$Warning/WarningSound.stop()
 
+func play_SelectSFX():
+	$SelectSFX.play()
 
 func toggle_UI(x):
 	#Pass 0 to Hide all UI Elements, Pass 1 to Show All UI Elements
@@ -62,6 +64,12 @@ func toggle_UI(x):
 	$GameOver.hide()
 	$Pause.hide()
 	$Warning.hide()
+
+
+
+
+
+
 
 
 
