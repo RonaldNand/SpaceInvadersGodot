@@ -13,7 +13,7 @@ func _ready():
 
 func _process(delta):
 	#get_input()
-	if (value != null):
+	if (value != 0):
 		$ColorRect/Label.text = str(value)
 	else:
 		$ColorRect/Label.text = ""

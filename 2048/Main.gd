@@ -10,7 +10,8 @@ extends Node2D
 
 export (PackedScene) var cell
 export var length = 4
-var table = []
+var numTable
+var cells
 var tableStates = []
 var cellSize
 var startingPosition = Vector2(100,100)
@@ -21,7 +22,8 @@ var startingPosition = Vector2(100,100)
 func _ready():
 	randomize()
 	position = startingPosition
-	initiliseTable(length)
+	numTable = createTable(length)
+	cells = createTable(length)
 	populateTable()
 	setNewNumber()
 
@@ -43,14 +45,16 @@ func get_input():
 		restoreGridState()
 
 
-func initiliseTable(length):
+func createTable(length):
 	#Create a square table of proportions length x length
+	var table = []
 	for x in length:
 		table.append([])
 		for y in length:
 			table[x].append(0)
+	return table
 
-func populateTable ():
+func populateTable():
 	#Populate an instance of cell into each spot in table array.
 	#TO-DO improve code so offset is not hardcoded. 
 	var row_offset = 0
@@ -59,9 +63,9 @@ func populateTable ():
 		col_offset = x * 64 
 		for y in length:
 			row_offset = y * 64
-			table[x][y] = cell.instance()
-			table[x][y].position += Vector2(row_offset, col_offset)
-			add_child(table[x][y])
+			cells[x][y] = cell.instance()
+			cells[x][y].position += Vector2(row_offset, col_offset)
+			add_child(cells[x][y])
 
 func setNewNumber():
 	copyGridState()
@@ -69,7 +73,7 @@ func setNewNumber():
 	for x in range (0,length):
 		for y in range (0,length):
 			#Locate free spots in grid
-			if (table[x][y].value == null):
+			if (numTable[x][y] == 0):
 				#Convert grid reference to number e.g [3][2] becomes 14
 				var num = x * length + y  
 				freeSpots.append(num)
@@ -82,8 +86,14 @@ func setNewNumber():
 	freeSpots.remove(number1)
 	var number2= randi() % freeSpots.size()
 	var c2 = convertToCoordinate(freeSpots[number2])
-	table[c1[0]][c1[1]].value = 2
-	table[c2[0]][c2[1]].value = 2
+	numTable[c1[0]][c1[1]] = 2
+	numTable[c2[0]][c2[1]] = 2
+	setCells()
+
+func setCells():
+	for x in range (0, length):
+		for y in range (0,length):
+			cells[x][y].value = numTable[x][y]
 	
 	
 func convertToCoordinate(number):
@@ -92,29 +102,15 @@ func convertToCoordinate(number):
 	return [x,y]
 	
 func copyGridState():
-	var tableState = []
-	for x in length:
-		tableState.append([])
-		for y in length:
-			tableState[x].append(0)
-	
-	for x in range (0,length):
-		for y in range (0,length):
-			if (table[x][y].value == null):
-				tableState[x][y] = 0
-			else:
-				tableState[x][y] = table[x][y].value
+	var tableState = numTable.duplicate(true)
 	tableStates.append(tableState)
 
 func restoreGridState():
-	var state = tableStates[tableStates.size()-1]
-	tableStates.remove(tableStates.size()-1)
-	for x in range (0,length):
-		for y in range (0,length):
-			if state[x][y] == 0:
-				table[x][y].value == null
-			else: 
-				table[x][y].value = state[x][y]
+	if tableStates.size() > 1:
+		var state = tableStates[tableStates.size()-1]
+		tableStates.remove(tableStates.size()-1)
+		numTable = state
+		setCells()
 
 			
 	
@@ -130,15 +126,15 @@ func moveGrid(direction):
 			for y in range (0,length):
 				for x in range (1,length):
 					while (x > 0):
-						if (table[x][y].value == null):
+						if (numTable[x][y] == 0):
 							break
-						if (table[x-1][y].value == table[x][y].value):
-							table[x-1][y].value += table[x][y].value
-							table[x][y].value = null
+						if (numTable[x-1][y] == numTable[x][y]):
+							numTable[x-1][y] += numTable[x][y]
+							numTable[x][y] = 0
 							break 
-						if (table[x-1][y].value == null):
-							table[x-1][y].value = table[x][y].value
-							table[x][y].value = null
+						if (numTable[x-1][y] == 0):
+							numTable[x-1][y] = numTable[x][y]
+							numTable[x][y] = 0
 							x -= 1
 						else:
 							break
@@ -147,55 +143,54 @@ func moveGrid(direction):
 			for y in range (0,length):
 				for x in range (length - 1 ,-1,-1):
 					while (x < length-1):
-						if (table[x][y].value == null):
+						if (numTable[x][y] == 0):
 							break
-						if (table[x+1][y].value == table[x][y].value):
-							table[x+1][y].value += table[x][y].value
-							table[x][y].value = null
+						if (numTable[x+1][y] == numTable[x][y]):
+							numTable[x+1][y] += numTable[x][y]
+							numTable[x][y] = 0
 							break 
-						if (table[x+1][y].value == null):
-							table[x+1][y].value = table[x][y].value
-							table[x][y].value = null
+						if (numTable[x+1][y] == 0):
+							numTable[x+1][y] = numTable[x][y]
+							numTable[x][y] = 0
 							x += 1
 						else:
 							break
 			setNewNumber()
 		"left":
-			for x in range (0,length):
-				for y in range (1,length):
-					while (y > 0):
-						if (table[x][y].value == null):
-							break
-						if (table[x][y-1].value == table[x][y].value):
-							table[x][y-1].value += table[x][y].value
-							table[x][y].value = null
-							break 
-						if (table[x][y-1].value == null):
-							table[x][y-1].value = table[x][y].value
-							table[x][y].value = null
-							y -= 1
-						else:
-							break
-			setNewNumber()
+				for x in range (0,length):
+					for y in range (1,length):
+						while (y > 0):
+							if (numTable[x][y] == 0):
+								break
+							if (numTable[x][y-1] == numTable[x][y]):
+								numTable[x][y-1] += numTable[x][y]
+								numTable[x][y] = 0
+								break 
+							if (numTable[x][y-1] == 0):
+								numTable[x][y-1] = numTable[x][y]
+								numTable[x][y] = 0
+								y -= 1
+							else:
+								break
+				setNewNumber()
 		"right":
 			for x in range (0,length):
 				for y in range (length-1,-1,-1):
 					while (y < length-1):
-						if (table[x][y].value == null):
+						if (numTable[x][y] == 0):
 							break
-						if (table[x][y+1].value == table[x][y].value):
-							table[x][y+1].value += table[x][y].value
-							table[x][y].value = null
+						if (numTable[x][y+1] == numTable[x][y]):
+							numTable[x][y+1] += numTable[x][y]
+							numTable[x][y] = 0
 							break 
-						if (table[x][y+1].value == null):
-							table[x][y+1].value = table[x][y].value
-							table[x][y].value = null
+						if (numTable[x][y+1] == 0):
+							numTable[x][y+1] = numTable[x][y]
+							numTable[x][y] = 0
 							y += 1
 						else:
 							break
 			setNewNumber()
-		
-		
+#
 
 
 
