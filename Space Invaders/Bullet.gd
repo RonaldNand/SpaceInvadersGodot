@@ -49,3 +49,7 @@ func playAudio(index):
 			$LaserSFX2.play()
 
 
+
+
+func _on_VisibilityNotifier2D_screen_exited():
+	destroy_bullet()

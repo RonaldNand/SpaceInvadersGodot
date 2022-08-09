@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Special Spotlight.mp3-35c3a5f694c6f779dacfac63dcb8585f.mp3str"
+
+[deps]
+
+source_file="res://Sound/BGAudio/Special Spotlight.mp3"
+dest_files=[ "res://.import/Special Spotlight.mp3-35c3a5f694c6f779dacfac63dcb8585f.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

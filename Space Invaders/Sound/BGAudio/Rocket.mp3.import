@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Rocket.mp3-2abc7429a27b1540b0ff7de7f59d536a.mp3str"
+
+[deps]
+
+source_file="res://Sound/BGAudio/Rocket.mp3"
+dest_files=[ "res://.import/Rocket.mp3-2abc7429a27b1540b0ff7de7f59d536a.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -5,10 +5,14 @@ extends AnimatedSprite
 # var a = 2
 # var b = "text"
 
+var sfx = "res://Sound/mixkit-pixel-chiptune-explosion-1692.wav"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$SFX.set_stream(load(sfx))
+	$SFX.play()
 	play()
+
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

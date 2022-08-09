@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Art/Fonts/flash-rogers (Score)/flashrogers.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Art/Fonts/audiowide (MessageText)/Audiowide-Regular.ttf" type="DynamicFontData" id=2]
-[ext_resource path="res://Sound/Warning/Warning.ogg" type="AudioStream" id=3]
+[ext_resource path="res://Sound/mixkit-facility-alarm-908.mp3" type="AudioStream" id=3]
 [ext_resource path="res://UI_GameOverlay.gd" type="Script" id=4]
+[ext_resource path="res://Sound/mixkit-sci-fi-click-900.mp3" type="AudioStream" id=5]
 
 [sub_resource type="DynamicFont" id=6]
 font_data = ExtResource( 1 )
@@ -41,6 +42,7 @@ custom_fonts/font = SubResource( 6 )
 text = "Score: "
 
 [node name="GameOver" type="Label" parent="."]
+visible = false
 margin_left = 88.0
 margin_top = 245.0
 margin_right = 1203.0
@@ -87,7 +89,22 @@ margin_right = 209.0
 margin_bottom = 272.0
 text = "Main Menu"
 
+[node name="MuteSound" type="Button" parent="Pause"]
+margin_left = 654.0
+margin_top = 376.0
+margin_right = 749.0
+margin_bottom = 396.0
+text = "Sounds: On"
+
+[node name="MuteMusic" type="Button" parent="Pause"]
+margin_left = 654.0
+margin_top = 328.0
+margin_right = 731.0
+margin_bottom = 348.0
+text = "Music: On"
+
 [node name="Warning" type="Label" parent="."]
+visible = false
 margin_left = 520.0
 margin_top = 415.0
 margin_right = 761.0
@@ -102,12 +119,17 @@ wait_time = 4.0
 [node name="WarningSound" type="AudioStreamPlayer2D" parent="Warning"]
 position = Vector2( 110, -69 )
 stream = ExtResource( 3 )
+bus = "SFX"
 
 [node name="SelectSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 5 )
+bus = "SFX"
 
 [connection signal="pressed" from="GameOver/RetryGameOver" to="." method="_on_RetryGameOver_pressed"]
 [connection signal="pressed" from="GameOver/MainMenu" to="." method="_on_MainMenu_pressed"]
 [connection signal="pressed" from="Pause/Resume" to="." method="_on_Resume_pressed"]
 [connection signal="pressed" from="Pause/Resume" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="Pause/MainMenu" to="." method="_on_MainMenu_pressed"]
+[connection signal="pressed" from="Pause/MuteSound" to="." method="_on_MuteSound_pressed"]
+[connection signal="pressed" from="Pause/MuteMusic" to="." method="_on_MuteMusic_pressed"]
 [connection signal="timeout" from="Warning/WarningMessageTime" to="." method="_on_WarningMessageTime_timeout"]

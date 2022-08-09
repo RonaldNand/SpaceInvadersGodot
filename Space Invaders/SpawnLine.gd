@@ -5,7 +5,6 @@ extends Path2D
 # var a = 2
 # var b = "text"
 export (PackedScene) var enemy
-export var spawnValue = [0.2,0.4,0.6,0.8]
 export var numberOfEnemies = 5
 export var numberWaves = 2
 export var distance = 128

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Art/Backgrounds/Space Background [Rawdanitsu]/Scene-1.jpg" type="Texture" id=2]
@@ -12,9 +12,6 @@ extents = Vector2( 20, 600 )
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 605, 65 )
 
-[sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 639, 32 )
-
 [node name="Stage" type="Node2D" groups=["Level"]]
 script = ExtResource( 5 )
 spawnerType = ExtResource( 6 )
@@ -22,9 +19,9 @@ spawnerType = ExtResource( 6 )
 [node name="UI_GameOverlay" parent="." instance=ExtResource( 3 )]
 pause_mode = 2
 
-[node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 640, 360 )
-scale = Vector2( 0.466691, 0.46875 )
+[node name="Background" type="Sprite" parent="."]
+position = Vector2( 640.25, 360 )
+scale = Vector2( 0.468338, 0.46875 )
 texture = ExtResource( 2 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
@@ -69,28 +66,18 @@ collision_mask = 2
 position = Vector2( 595, 55 )
 shape = SubResource( 2 )
 
-[node name="OutOfBounds" type="Area2D" parent="."]
-position = Vector2( 11, -73 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="OutOfBounds"]
-position = Vector2( 628, -10 )
-shape = SubResource( 3 )
-
-[node name="OutOfBounds2" type="Area2D" parent="."]
-position = Vector2( 11, 800 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="OutOfBounds2"]
-position = Vector2( 628, -10 )
-shape = SubResource( 3 )
-
 [node name="PlayerSpawn" type="Position2D" parent="."]
 position = Vector2( 638, 607 )
 
 [node name="SpawnerLocation" type="Position2D" parent="."]
 position = Vector2( 40, 80 )
 
+[node name="BGM" type="AudioStreamPlayer2D" parent="."]
+bus = "BGM"
+
 [connection signal="gameStart" from="UI_GameOverlay" to="." method="_on_UI_GameOverlay_gameStart"]
 [connection signal="unpause" from="UI_GameOverlay" to="." method="_on_UI_GameOverlay_unpause"]
 [connection signal="playerDeath" from="Player" to="." method="_on_Player_playerDeath"]
 [connection signal="difficultyIncrease" from="Spawn" to="UI_GameOverlay" method="_on_Spawn_difficultyIncrease"]
 [connection signal="area_entered" from="GameOverPoint" to="." method="_on_GameOverPoint_area_entered"]
+[connection signal="finished" from="BGM" to="." method="_on_BGM_finished"]

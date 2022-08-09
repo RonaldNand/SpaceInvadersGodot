@@ -12,7 +12,6 @@ signal unpause
 func _ready():
 	toggle_UI(0)
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	update_score()
@@ -41,6 +40,23 @@ func _on_MainMenu_pressed():
 	get_tree().change_scene("res://UI_MainMenu.tscn")
 	get_tree().paused = false
 
+func _on_MuteSound_pressed():
+	play_SelectSFX()
+	var idx = AudioServer.get_bus_index("SFX")
+	if AudioServer.is_bus_mute(idx):
+		AudioServer.set_bus_mute(idx,false)
+	else:
+		AudioServer.set_bus_mute(idx,true)
+
+func _on_MuteMusic_pressed():
+	play_SelectSFX()
+	var idx = AudioServer.get_bus_index("BGM")
+	if AudioServer.is_bus_mute(idx):
+		AudioServer.set_bus_mute(idx,false)
+	else:
+		AudioServer.set_bus_mute(idx,true)
+
+
 func _on_Spawn_difficultyIncrease():
 	$Warning.show() 
 	$Warning/WarningMessageTime.start()
@@ -64,6 +80,8 @@ func toggle_UI(x):
 	$GameOver.hide()
 	$Pause.hide()
 	$Warning.hide()
+
+
 
 
 

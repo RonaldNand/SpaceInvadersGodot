@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/mixkit-pixel-chiptune-explosion-1692.wav-3e6cce204b5bb4857e93dfcbd924e38d.sample"
+
+[deps]
+
+source_file="res://Sound/mixkit-pixel-chiptune-explosion-1692.wav"
+dest_files=[ "res://.import/mixkit-pixel-chiptune-explosion-1692.wav-3e6cce204b5bb4857e93dfcbd924e38d.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

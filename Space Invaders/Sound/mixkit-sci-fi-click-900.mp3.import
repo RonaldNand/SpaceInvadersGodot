@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/mixkit-sci-fi-click-900.mp3-040c089675a41bab41cd25797afa2212.mp3str"
+
+[deps]
+
+source_file="res://Sound/mixkit-sci-fi-click-900.mp3"
+dest_files=[ "res://.import/mixkit-sci-fi-click-900.mp3-040c089675a41bab41cd25797afa2212.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -7,8 +7,17 @@ extends Node2D
 var LevelScore = 0
 export (PackedScene) var spawnerType
 
+var BGMTrack = {
+	1: "res://Sound/BGAudio/Level Up.mp3",
+	2: "res://Sound/BGAudio/Reformat.mp3",
+	3: "res://Sound/BGAudio/Special Spotlight.mp3",
+	4: "res://Sound/BGAudio/Voltaic.mp3"
+}
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	randomize()
+	playBGM()
 	get_tree().paused = true
 	initialiseGame()
 	
@@ -61,19 +70,11 @@ func get_input():
 	if Input.is_action_just_pressed("pause"):
 		pauseGame()
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+func _on_BGM_finished():
+	playBGM()
+		
+func playBGM():
+	var track = (BGMTrack[randi() % BGMTrack.size() + 1])
+	$BGM.set_stream(load(track))
+	$BGM.play()
 

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Level Up.mp3-b9fbb7f88e4a7e036230d00c797d2081.mp3str"
+
+[deps]
+
+source_file="res://Sound/BGAudio/Level Up.mp3"
+dest_files=[ "res://.import/Level Up.mp3-b9fbb7f88e4a7e036230d00c797d2081.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

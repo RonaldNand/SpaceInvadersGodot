@@ -6,8 +6,8 @@ extends CanvasLayer
 # var b = "text"
 
 # Called when the node enters the scene tree for the first time.
-#func _ready():
-#	pass 
+func _ready():
+	$MainMenuBGM.play()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
@@ -22,11 +22,20 @@ func _on_GameStart_pressed():
 
 func _on_MuteSound_pressed():
 	play_SelectSFX()
-	print("mutesound") # Replace with function body.
+	var idx = AudioServer.get_bus_index("SFX")
+	if AudioServer.is_bus_mute(idx):
+		AudioServer.set_bus_mute(idx,false)
+	else:
+		AudioServer.set_bus_mute(idx,true)
 
 func _on_MuteMusic_pressed():
 	play_SelectSFX()
-	pass # Replace with function body.
+	var idx = AudioServer.get_bus_index("BGM")
+	if AudioServer.is_bus_mute(idx):
+		AudioServer.set_bus_mute(idx,false)
+	else:
+		AudioServer.set_bus_mute(idx,true)
+
 
 	
 func play_SelectSFX():

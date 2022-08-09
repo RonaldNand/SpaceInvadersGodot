@@ -1,9 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Art/Fonts/audiowide (MessageText)/Audiowide-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Art/Fonts/SpaceAge (MainMenu)/space age.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://UI_MainMenu.gd" type="Script" id=3]
+[ext_resource path="res://Sound/BGAudio/Rocket.mp3" type="AudioStream" id=4]
 [ext_resource path="res://Art/Backgrounds/Space Background [Rawdanitsu]/EmptyStarfield.jpg" type="Texture" id=5]
+[ext_resource path="res://Sound/mixkit-sci-fi-click-900.mp3" type="AudioStream" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 size = 60
@@ -59,32 +61,31 @@ margin_left = 1142.0
 margin_top = 660.0
 margin_right = 1237.0
 margin_bottom = 680.0
-text = "Mute Sounds"
+text = "Sounds: On"
 
 [node name="MuteMusic" type="Button" parent="."]
 margin_left = 1147.0
 margin_top = 617.0
 margin_right = 1159.0
 margin_bottom = 637.0
-text = "Mute Music"
-
-[node name="LevelSelect" type="Button" parent="."]
-margin_left = 585.0
-margin_top = 496.0
-margin_right = 689.0
-margin_bottom = 546.0
-text = "Level Select"
+text = "Music: On"
 
 [node name="Credits" type="Button" parent="."]
-margin_left = 585.0
-margin_top = 568.0
-margin_right = 689.0
-margin_bottom = 624.0
+margin_left = 584.0
+margin_top = 496.0
+margin_right = 688.0
+margin_bottom = 552.0
 text = "Credits"
 
 [node name="MainMenuBGM" type="AudioStreamPlayer2D" parent="."]
+pause_mode = 2
+stream = ExtResource( 4 )
+bus = "BGM"
 
 [node name="SelectSFX" type="AudioStreamPlayer2D" parent="."]
+pause_mode = 2
+stream = ExtResource( 6 )
+bus = "SFX"
 
 [connection signal="pressed" from="GameStart" to="." method="_on_GameStart_pressed"]
 [connection signal="pressed" from="MuteSound" to="." method="_on_MuteSound_pressed"]
