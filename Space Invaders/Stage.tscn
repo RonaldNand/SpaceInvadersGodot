@@ -1,7 +1,6 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Art/Backgrounds/Space Background [Rawdanitsu]/Scene-1.jpg" type="Texture" id=2]
 [ext_resource path="res://UI_GameOverlay.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Stage.gd" type="Script" id=5]
 [ext_resource path="res://SpawnLine.tscn" type="PackedScene" id=6]
@@ -22,7 +21,6 @@ pause_mode = 2
 [node name="Background" type="Sprite" parent="."]
 position = Vector2( 640.25, 360 )
 scale = Vector2( 0.468338, 0.46875 )
-texture = ExtResource( 2 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( -72, 300 )

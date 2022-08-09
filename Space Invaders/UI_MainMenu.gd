@@ -7,6 +7,7 @@ extends CanvasLayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$CreditsText.hide()
 	$MainMenuBGM.play()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -36,6 +37,13 @@ func _on_MuteMusic_pressed():
 	else:
 		AudioServer.set_bus_mute(idx,true)
 
+func _on_Credits_pressed():
+	if ($CreditsText.is_visible()):
+		$CreditsText.hide()
+	else:
+		$CreditsText.show()
+	
+
 
 	
 func play_SelectSFX():
@@ -49,6 +57,8 @@ func toggle_UI(x):
 				get_child(n).hide()
 			1:
 				get_child(n).show()
+
+
 
 
 

@@ -52,7 +52,7 @@ func fire():
 func die():
 	var deathExplosion = explosion.instance()
 	deathExplosion.position = position
-	deathExplosion.SFX = "res://Sound/mixkit-arcade-game-explosion-1699.wav"
+	deathExplosion.sfx = "res://Sound/mixkit-arcade-game-explosion-1699.wav"
 	get_parent().add_child(deathExplosion)
 	yield(get_tree().create_timer(1.0),"timeout" )
 	emit_signal("playerDeath")

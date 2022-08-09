@@ -7,6 +7,12 @@ extends Node2D
 var LevelScore = 0
 export (PackedScene) var spawnerType
 
+var background = {
+	1: "res://Art/Backgrounds/Space Background [Rawdanitsu]/Scene-1.jpg",
+	2: "res://Art/Backgrounds/Space Background [Rawdanitsu]/Scene-2.jpg",
+	3: "res://Art/Backgrounds/Space Background [Rawdanitsu]/Scene-3.jpg"
+}
+
 var BGMTrack = {
 	1: "res://Sound/BGAudio/Level Up.mp3",
 	2: "res://Sound/BGAudio/Reformat.mp3",
@@ -17,6 +23,7 @@ var BGMTrack = {
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	randomize()
+	setBackground()
 	playBGM()
 	get_tree().paused = true
 	initialiseGame()
@@ -78,3 +85,10 @@ func playBGM():
 	$BGM.set_stream(load(track))
 	$BGM.play()
 
+func setBackground():
+	var bg = (background[randi() % background.size() + 1])
+	$Background.set_texture(load(bg)) 
+	var BGImageSize = get_viewport().size
+	var textureSize = $Background.texture.get_size()
+	var factor = BGImageSize/textureSize
+	$Background.scale = factor
